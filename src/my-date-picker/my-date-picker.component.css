@@ -27,6 +27,21 @@
     animation: selectorfadein 0.1s;
 }
 
+@-moz-document url-prefix() {
+    .mydp .selector {
+        margin-top: 2px;
+        margin-left: -1px;
+        position: relative;
+        width: 252px;
+        padding: 0;
+        border: 1px solid #CCC;
+        border-radius: 2px;
+        z-index: 100;
+        animation: selectorfadein 0.1s;
+        display: table-footer-group;
+    }
+}
+
 .mydp .selector:focus {
     border: 1px solid #ADD8E6;
     outline: none;
