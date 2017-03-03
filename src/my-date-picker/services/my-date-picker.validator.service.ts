@@ -9,7 +9,7 @@ export class ValidatorService {
     isDateValid(dateStr: string, dateFormat: string, minYear: number, maxYear: number, disableUntil: IMyDate, disableSince: IMyDate, disableWeekends: boolean, disableDays: Array<IMyDate>, disableDateRange: IMyDateRange, monthLabels: IMyMonthLabels, enableDays: Array<IMyDate>): IMyDate {
         let daysInMonth: Array<number> = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         let isMonthStr: boolean = dateFormat.indexOf("mmm") !== -1;
-        let returnDate: IMyDate = {day: 0, month: 0, year: 0};
+        let returnDate: IMyDate = { day: 0, month: 0, year: 0 };
 
         if (dateStr.length !== dateFormat.length) {
             return returnDate;
@@ -31,7 +31,7 @@ export class ValidatorService {
                 return returnDate;
             }
 
-            let date: IMyDate = {year: year, month: month, day: day};
+            let date: IMyDate = { year: year, month: month, day: day };
 
             if (this.isDisabledDay(date, disableUntil, disableSince, disableWeekends, disableDays, disableDateRange, enableDays)) {
                 return returnDate;
@@ -67,6 +67,17 @@ export class ValidatorService {
         return -1;
     }
 
+    formatDay(dateFormat: string, dateString: string, datePart: string): number {
+        let dateValue = dateString.split("-");
+        let value = dateValue[2];
+        return parseInt(value);
+    }
+    formatMonth(dateFormat: string, dateString: string, datePart: string): number {
+        let dateValue = dateString.split("-");
+        let value = dateValue[1];
+        return parseInt(value);
+    }
+
     parseDatePartNumber(dateFormat: string, dateString: string, datePart: string): number {
         let pos: number = dateFormat.indexOf(datePart);
         if (pos !== -1) {
@@ -88,7 +99,7 @@ export class ValidatorService {
     }
 
     parseDefaultMonth(monthString: string): IMyMonth {
-        let month: IMyMonth = {monthTxt: "", monthNbr: 0, year: 0};
+        let month: IMyMonth = { monthTxt: "", monthNbr: 0, year: 0 };
         if (monthString !== "") {
             let split = monthString.split(monthString.match(/[^0-9]/)[0]);
             month.monthNbr = split[0].length === 2 ? parseInt(split[0]) : parseInt(split[1]);
