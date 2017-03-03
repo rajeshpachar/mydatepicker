@@ -77,9 +77,9 @@ export class ValidatorService {
         let value = dateValue[1];
         return parseInt(value);
     }
-     formatYear(dateFormat: string, dateString: string, datePart: string): number {
+    formatYear(dateFormat: string, dateString: string, datePart: string): number {
         let dateValue = dateString.split("-");
-        let value = dateValue[2];
+        let value = dateValue[0];
         return parseInt(value);
     }
 
