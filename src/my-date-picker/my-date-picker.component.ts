@@ -618,10 +618,10 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
             date.day = this.validatorService.formatDay(this.opts.dateFormat, sd, "dd");
 
             date.month = this.opts.dateFormat.indexOf("mmm") !== -1
-                ? this.validatorService.parseDatePartMonthName(this.opts.dateFormat, sd, "mmm", this.opts.monthLabels)
+                ? this.validatorService.formatMonth(this.opts.dateFormat, sd, "mmm")
                 : this.validatorService.formatMonth(this.opts.dateFormat, sd, "mm");
 
-            date.year = this.validatorService.parseDatePartNumber(this.opts.dateFormat, sd, "yyyy");
+            date.year = this.validatorService.formatYear(this.opts.dateFormat, sd, "yyyy");
         }
         else if (typeof selDate === "object") {
             date = selDate;
