@@ -69,7 +69,7 @@ export class ValidatorService {
 
     formatDay(dateFormat: string, dateString: string, datePart: string): number {
         let dateValue = dateString.split("-");
-        let value = dateValue[2];
+        let value = dateValue[0];
         return parseInt(value);
     }
     formatMonth(dateFormat: string, dateString: string, datePart: string): number {
@@ -79,7 +79,7 @@ export class ValidatorService {
     }
     formatYear(dateFormat: string, dateString: string, datePart: string): number {
         let dateValue = dateString.split("-");
-        let value = dateValue[0];
+        let value = dateValue[2];
         return parseInt(value);
     }
 

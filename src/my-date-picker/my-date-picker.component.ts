@@ -311,7 +311,14 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
         if (changes.hasOwnProperty("selDate")) {
             let sd: any = changes["selDate"];
             if (sd.currentValue !== null && sd.currentValue !== undefined && sd.currentValue !== "" && Object.keys(sd.currentValue).length !== 0) {
-                this.selectedDate = this.parseSelectedDate(sd.currentValue);
+                let currentNewDate = (sd.currentValue.formatted) ? sd.currentValue.formatted : sd.currentValue;
+                let parts = currentNewDate.split("-");
+                if (parts[0].length === 4) {
+                    parts = parts.reverse();
+                }
+                parts = parts.join("-");
+
+                this.selectedDate = this.parseSelectedDate(parts);
                 setTimeout(() => {
                     this.onChangeCb(this.getDateModel(this.selectedDate));
                 });
@@ -611,6 +618,9 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
         } else {
             selDate = selDate;
         }
+        // let parts = selDate.split("-");
+        // parts = parts.reverse();
+        // selDate = parts.join("-");
         // Parse selDate value - it can be string or IMyDate object
         let date: IMyDate = { day: 0, month: 0, year: 0 };
         if (typeof selDate === "string") {
