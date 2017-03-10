@@ -310,6 +310,19 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
 
         if (changes.hasOwnProperty("selDate")) {
             let sd: any = changes["selDate"];
+            if (!sd.currentValue || !sd.previousValue) {
+                 return;
+             }
+            if (sd.currentValue.formatted && sd.previousValue.formatted) {
+                if (sd.currentValue.formatted == sd.previousValue.formatted) {
+                    return;
+                }
+            }
+            if (sd.currentValue && sd.previousValue) {
+                if (sd.currentValue == sd.previousValue) {
+                    return;
+                }
+            }
             if (sd.currentValue !== null && sd.currentValue !== undefined && sd.currentValue !== "" && Object.keys(sd.currentValue).length !== 0) {
                 let currentNewDate = (sd.currentValue.formatted) ? sd.currentValue.formatted : sd.currentValue;
                 let parts = currentNewDate.split("-");
