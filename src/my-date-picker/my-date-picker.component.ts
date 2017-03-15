@@ -332,6 +332,9 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
                 parts = parts.join("-");
 
                 this.selectedDate = this.parseSelectedDate(parts);
+                 if (!sd.previousValue || typeof sd.previousValue === 'object') {
+                    return
+                }
                 setTimeout(() => {
                     this.onChangeCb(this.getDateModel(this.selectedDate));
                 });
