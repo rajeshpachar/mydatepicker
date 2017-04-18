@@ -106,15 +106,17 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
 
     constructor(public elem: ElementRef, private renderer: Renderer, private localeService: LocaleService, private validatorService: ValidatorService) {
         this.setLocaleOptions();
-        renderer.listenGlobal("document", "click", (event: any) => {
-            if (this.showSelector && event.target && this.elem.nativeElement !== event.target && !this.elem.nativeElement.contains(event.target)) {
-                this.showSelector = false;
-                this.calendarToggle.emit(4);
-            }
-            if (this.opts.editableMonthAndYear && event.target && this.elem.nativeElement.contains(event.target)) {
-                this.resetMonthYearEdit();
-            }
-        });
+        //this.zone.runOutsideAngular(() => {
+        //     window.document.addEventListener('click', (event: any) => {
+        //         if (this.showSelector && event.target && this.elem.nativeElement !== event.target && !this.elem.nativeElement.contains(event.target)) {
+        //             this.showSelector = false;
+        //             //this.calendarToggle.emit(4);
+        //         }
+        //         if (this.opts.editableMonthAndYear && event.target && this.elem.nativeElement.contains(event.target)) {
+        //             this.resetMonthYearEdit();
+        //         }
+        //     });
+        // });
     }
 
     setLocaleOptions(): void {
@@ -311,8 +313,8 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
         if (changes.hasOwnProperty("selDate")) {
             let sd: any = changes["selDate"];
             if (!sd.currentValue || !sd.previousValue) {
-                 return;
-             }
+                return;
+            }
             if (sd.currentValue.formatted && sd.previousValue.formatted) {
                 if (sd.currentValue.formatted == sd.previousValue.formatted) {
                     return;
@@ -332,7 +334,7 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
                 parts = parts.join("-");
 
                 this.selectedDate = this.parseSelectedDate(parts);
-                 if (!sd.previousValue || typeof sd.previousValue === 'object') {
+                if (!sd.previousValue || typeof sd.previousValue === 'object') {
                     return
                 }
                 setTimeout(() => {
