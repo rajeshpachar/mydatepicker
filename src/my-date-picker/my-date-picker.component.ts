@@ -312,7 +312,8 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
 
         if (changes.hasOwnProperty("selDate")) {
             let sd: any = changes["selDate"];
-            if (!sd.currentValue || !sd.previousValue) {
+             // || !sd.previousValue to fix when date picker is loaded first time.
+            if (!sd.currentValue) {
                 return;
             }
             if (sd.currentValue.formatted && sd.previousValue.formatted) {
