@@ -1,4 +1,4 @@
-<div class="mydp" [ngStyle]="{'max-width': getComponentWidth(), 'border': opts.inline ? 'none' : null}">
+<div class="mydp" [ngStyle]="{'width': getComponentWidth(), 'border': opts.inline ? 'none' : null}">
     <div class="selectiongroup" *ngIf="!opts.inline">
         <input *ngIf="opts.showInputField" ngtype="text" class="selection" aria-label="Calendar input field" [attr.maxlength]="opts.dateFormat.length" [ngClass]="{'invaliddate': invalidDate&&opts.indicateInvalidDate}" placeholder="{{placeholder}}"
                 [ngStyle]="{'height': opts.height, 'line-height': opts.height, 'font-size': opts.selectionTxtFontSize, 'border': 'none', 'padding-right': selectionDayTxt.length>0&&opts.showClearDateBtn ? '60px' : '30px'}"
