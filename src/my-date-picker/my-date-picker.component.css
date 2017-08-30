@@ -18,7 +18,7 @@
 .mydp .selector {
     margin-top: 2px;
     margin-left: -1px;
-    position: absolute;
+    position: relative;
     width: 252px;
     padding: 0;
     border: 1px solid #CCC;
@@ -444,7 +444,6 @@
     font-weight: normal;
     font-variant: normal;
     text-transform: none;
-
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
