@@ -316,14 +316,14 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
             if (!sd.currentValue) {
                 return;
             }
-            if (sd.currentValue.formatted && sd.previousValue.formatted) {
-                if (sd.currentValue.formatted == sd.previousValue.formatted) {
-                    return;
-                }
-            }
             if (sd.currentValue && sd.previousValue) {
                 if (sd.currentValue == sd.previousValue) {
                     return;
+                }
+                if (sd.currentValue.formatted && sd.previousValue.formatted) {
+                    if (sd.currentValue.formatted == sd.previousValue.formatted) {
+                        return;
+                    }
                 }
             }
             if (sd.currentValue !== null && sd.currentValue !== undefined && sd.currentValue !== "" && Object.keys(sd.currentValue).length !== 0) {
